@@ -1,18 +1,20 @@
 /**
  * @author Jörn Kreutel
  */
-
 import {mwf} from "../Main.js";
 import {entities} from "../Main.js";
 
-export default class MyInitialViewController extends mwf.ViewController {
+export default class ListViewController extends mwf.ViewController {
 
     constructor() {
-        super();
-
-        var item = new entities.MediaItem();
-        console.log("created: ", item);
-        console.log("MyInitialViewController()");
+        super()
+        console.log("ListViewController()")
+        this.items = [
+            new entities.MediaItem("m1","https://placeimg.com/100/100/city"),
+            new entities.MediaItem("m2","https://placeimg.com/100/100/music"),
+            new entities.MediaItem("m3","https://placeimg.com/100/100/culture")
+        ]
+        this.addNewMediaItem = null
     }
 
     /*
@@ -20,8 +22,11 @@ export default class MyInitialViewController extends mwf.ViewController {
      */
     async oncreate() {
         // TODO: do databinding, set listeners, initialise the view
-
-        // call the superclass once creation is done
+        this.addNewMediaItemElement = this.root.querySelector("#addNewMediaItem")
+        this.addNewMediaItemElement.onclick = (() => {
+            this.addToListview(new entities.MediaItem("m_new", "https://placeimg.com/100/100/city"))
+        })
+        this.initialiseListview(this.items)
         super.oncreate();
     }
 
@@ -31,6 +36,9 @@ export default class MyInitialViewController extends mwf.ViewController {
      */
     bindListItemView(viewid, itemview, item) {
         // TODO: implement how attributes of item shall be displayed in itemview
+        itemview.root.getElementsByTagName("img")[0].src = item.src
+        itemview.root.getElementsByTagName("h2")[0].textContent = item.title
+        itemview.root.getElementsByTagName("h3")[0].textContent = item.added
     }
 
     /*
@@ -39,6 +47,7 @@ export default class MyInitialViewController extends mwf.ViewController {
      */
     onListItemSelected(listitem, listview) {
         // TODO: implement how selection of listitem shall be handled
+        console.warn("Element " + listitem.title + " wurde ausgewählt!")
     }
 
     /*
@@ -55,11 +64,17 @@ export default class MyInitialViewController extends mwf.ViewController {
      */
     bindDialog(dialogid, dialog, item) {
         // call the supertype function
-        super.bindDialog(this, dialogid, dialog, item);
+        super.bindDialog(dialogid, dialog, item);
 
         // TODO: implement action bindings for dialog, accessing dialog.root
     }
 
+    /*
+     * for views that initiate transitions to other views
+     */
+    async onReturnFromSubview(subviewid, returnValue, returnStatus) {
+        // TODO: check from which view, and possibly with which status, we are returning, and handle returnValue accordingly
+    }
 
 }
 

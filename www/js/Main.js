@@ -32,9 +32,9 @@ import {GenericDialogTemplateViewController} from "../lib/js/framework-modules.j
 /* application libraries: the main application class */
 import MyApplication from "./MyApplication.js";
 /* application libraries: model */
-import * as entities from "./model/MyEntities.js";
+import * as entities from "./model/Entities.js";
 /* application libraries: view controllers */
-import MyInitialViewController from "./controller/MyInitialViewController.js";
+import ListViewController from "./controller/ListViewController.js";
 // TODO-REPEATED: import any further view controllers here
 
 
@@ -52,7 +52,7 @@ export {
     /* application modules */
     MyApplication,
     entities,
-    MyInitialViewController,
+    ListViewController,
     // TODO-REPEATED: export any further view controllers here
 }
 
