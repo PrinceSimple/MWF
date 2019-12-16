@@ -35,6 +35,8 @@ import MyApplication from "./MyApplication.js";
 import * as entities from "./model/Entities.js";
 /* application libraries: view controllers */
 import ListViewController from "./controller/ListViewController.js";
+import ReadViewController from "./controller/ReadViewController.js";
+
 // TODO-REPEATED: import any further view controllers here
 
 
@@ -53,6 +55,7 @@ export {
     MyApplication,
     entities,
     ListViewController,
+    ReadViewController
     // TODO-REPEATED: export any further view controllers here
 }
 

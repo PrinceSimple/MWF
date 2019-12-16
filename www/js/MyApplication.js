@@ -1,39 +1,36 @@
 /**
- * Created by master on 17.02.16.
+ * Created by phrunk on 24.11.19
  */
-import {mwf} from "./Main.js";
-import {mwfUtils} from "./Main.js";
-import {EntityManager} from "./Main.js";
-import {GenericCRUDImplLocal} from "./Main.js";
-import {GenericCRUDImplRemote} from "./Main.js";
-import {entities} from "./Main.js";
+import {mwf} from "./Main.js"
+import {mwfUtils} from "./Main.js"
+import {EntityManager} from "./Main.js"
+import {GenericCRUDImplLocal} from "./Main.js"
+import {GenericCRUDImplRemote} from "./Main.js"
+import {entities} from "./Main.js"
 
 class MyApplication extends mwf.Application {
-
     constructor() {
         super();
     }
-
     async oncreate() {
-        console.log("MyApplication.oncreate(): calling supertype oncreate");
-
+        Ractive.DEBUG = false;
+        console.log("MyApplication.oncreate(): calling supertype oncreate")
         // first call the supertype method and pass a callback
         await super.oncreate();
-
-        console.log("MyApplication.oncreate(): initialising local database");
+        console.log("MyApplication.oncreate(): initialising local database")
         // initialise the local database
         // TODO-REPEATED: add new entity types to the array of object store names
-        await GenericCRUDImplLocal.initialiseDB("mwftutdb", 1, ["MediaItem"]);
-
-        console.log("MyApplication.oncreate(): local database initialised");
-
+        await GenericCRUDImplLocal.initialiseDB("mwftutdb", 1, ["MediaItem"])
+        console.log("MyApplication.oncreate(): local database initialised")
         //// TODO-REPEATED: if entity manager is used, register entities and crud operations for the entity types
-        //this.registerEntity("MyEntity", entities.MyEntity, true);
-        //this.registerCRUD("MyEntity", this.CRUDOPS.LOCAL, GenericCRUDImplLocal.newInstance("MyEntity"));
-        //this.registerCRUD("MyEntity", this.CRUDOPS.REMOTE, GenericCRUDImplRemote.newInstance("MyEntity"));
+        this.registerEntity("MediaItem", entities.MediaItem, true);
+        this.registerCRUD("MediaItem", this.CRUDOPS.LOCAL, GenericCRUDImplLocal.newInstance("MediaItem"))
+        this.registerCRUD("MediaItem", this.CRUDOPS.REMOTE, GenericCRUDImplRemote.newInstance("MediaItem"))
+
+        // activate the local crud operations
+        this.initialiseCRUD(this.CRUDOPS.LOCAL, EntityManager);
 
         // TODO: do any further application specific initialisations here
-
         // THIS MUST NOT BE FORGOTTEN: initialise the entity manager!
         EntityManager.initialise();
     };
