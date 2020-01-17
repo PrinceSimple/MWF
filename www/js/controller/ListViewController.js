@@ -10,14 +10,8 @@ export default class ListViewController extends mwf.ViewController {
     constructor() {
         super()
         this.resetDatabaseElement = null
-        console.log("ListViewController()")
-        /* this.items = [
-            new entities.MediaItem("m1","https://placeimg.com/100/100/city"),
-            new entities.MediaItem("m2","https://placeimg.com/100/100/music"),
-            new entities.MediaItem("m3","https://placeimg.com/100/100/culture")
-        ] */
         this.addNewMediaItem = null
-        // this.crudops = GenericCRUDImplLocal.newInstance("MediaItem")
+  
     }
 
     /*
