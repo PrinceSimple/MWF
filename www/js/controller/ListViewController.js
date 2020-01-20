@@ -11,7 +11,7 @@ export default class ListViewController extends mwf.ViewController {
         super()
         this.resetDatabaseElement = null
         this.addNewMediaItem = null
-  
+
     }
 
     /*
@@ -25,7 +25,8 @@ export default class ListViewController extends mwf.ViewController {
                     this.addToListview(created)
                 }
             ) */
-            this.createNewItem()
+            //this.createNewItem()
+            this.nextView("mediaEditView", {item: new entities.MediaItem()})
         })
         this.resetDatabaseElement = this.root.querySelector("#resetDatabase")
         // CRUD
@@ -68,7 +69,7 @@ export default class ListViewController extends mwf.ViewController {
      */
      /*onListItemSelected(listitem, listview) {
         // TODO: implement how selection of listitem shall be handled
-        this.nextView("mediaReadview", {item: listitem})
+        this.nextView("mediaReadView", {item: listitem})
     }*/
   
     /*
@@ -87,8 +88,14 @@ export default class ListViewController extends mwf.ViewController {
         // TODO: implement action bindings for dialog, accessing dialog.root
     }
     async onReturnFromSubview(subviewid, returnValue, returnStatus) {
-        if (subviewid == "mediaReadview" && returnValue && returnValue.deletedItem) {
+        if (subviewid == "mediaReadView" && returnValue && returnValue.deletedItem) {
             this.removeFromListview(returnValue.deletedItem._id)
+        }
+        if (subviewid == "mediaReadView" && returnValue && returnValue.updatedItem) {
+            this.updateInListview(returnValue.updatedItem._id, returnValue.updatedItem)
+        }
+        if (subviewid == "mediaEditView" && returnValue && returnValue.createdItem) {
+            this.addToListview(returnValue.createdItem)
         }
     }
     createNewItem() {
@@ -142,6 +149,9 @@ export default class ListViewController extends mwf.ViewController {
                 })
             }
         })
+    }
+    editFRM(item) {
+        this.nextView("mediaEditView", {item: item})
     }
 }
 

@@ -1,6 +1,3 @@
-/*
- * originally taken from http://jmesnil.net/weblog/2010/11/24/html5-web-application-for-iphone-and-ipad-with-node-js/
- */
 
 var http = require('http');
 var https = require('https');
@@ -28,6 +25,11 @@ var apiref = "api";
 /****************************************************************************
  * adaptable settings
  ****************************************************************************/
+// set this variable to true for testing service workers and progressive webapp manifest without http on localhost
+var localtest = true;
+if (localtest) {
+    ip = "127.0.0.1";
+}
 
 // settings for https
 var httpsEnabled = false;
@@ -152,7 +154,7 @@ function handleRequest(req,res,path,tenant) {
 
         tenantCRUDImpl.processRequest(req, res, apiref);
     } else {
-        if (path.length > 1 && path.indexOf("%7D%7D") == path.length - 6 || (path.length == 7 && path.includes("/%7B%7B"))) {
+        if (path.length > 1 && path.indexOf("%7D%7D") == path.length - 6) {
             console.warn((tenant ? tenant.name : "") + ".onHttpRequest(): path seems to be a template filling expression. Will not deliver anything.");
             res.writeHead(204);
             res.end();
@@ -279,4 +281,3 @@ function contentType(path) {
         return "text/html";
     }
 }
-

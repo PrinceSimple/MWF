@@ -15,12 +15,18 @@ export default class ReadViewController extends mwf.ViewController {
      */
     async oncreate() {
         // TODO: do databinding, set listeners, initialise the view
-        var mediaItem = this.args.item//new entities.MediaItem("m","https://placeimg.com/300/400/music")
-        this.viewProxy = this.bindElement("mediaReadviewTemplate", {item:mediaItem}, this.root).viewProxy;
+        let mediaItem = this.args.item//new entities.MediaItem("m","https://placeimg.com/300/400/music")
+        this.viewProxy = this.bindElement("mediaReadViewTemplate", {item:mediaItem}, this.root).viewProxy;
         this.viewProxy.bindAction("deleteItem", (() => {
             mediaItem.delete().then(() => {
                 this.previousView({deletedItem:mediaItem});
             })
+        }))
+        this.viewProxy.bindAction("editItem", (() => {
+            this.nextView("mediaEditView", {item: mediaItem})
+        }))
+        this.viewProxy.bindAction("backToList", (() => {
+            this.previousView({updatedItem: mediaItem})
         }))
         // call the superclass once creation is done
         super.oncreate();
@@ -37,7 +43,9 @@ export default class ReadViewController extends mwf.ViewController {
      * for views that initiate transitions to other views
      */
     async onReturnFromSubview(subviewid, returnValue, returnStatus) {
-        // TODO: check from which view, and possibly with which status, we are returning, and handle returnValue accordingly
+        if (subviewid == "mediaEditView" && returnValue && returnValue.updatedItem) {
+            this.viewProxy.update({item: returnValue.updatedItem})
+        }
     }
 
 }

@@ -2157,11 +2157,6 @@ function onloadApplication() {
             document.querySelector("body").classList.remove("mwf-loading-app");
             document.querySelector("body").classList.add("mwf-loaded-app");
 
-            // we set a listener that reacts to changes of the window location
-            window.onbeforeunload = function () {
-                confirm("Do you really want to leave this app?");
-            };
-
             // push the initial view controller to the application state
             applicationState.pushViewController(initialViewController);
         });

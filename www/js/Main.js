@@ -30,7 +30,7 @@ import {GenericDialogTemplateViewController} from "../lib/js/framework-modules.j
 // import {mapHolder} from "../lib/js/framework-modules.js";
 
 /* application libraries: the main application class */
-import MyApplication from "./MyApplication.js";
+import FHTApp from "./FHTApp.js";
 /* application libraries: model */
 import * as entities from "./model/Entities.js";
 /* application libraries: view controllers */
@@ -53,7 +53,7 @@ export {
     /* TODO: export the mapHolder in case it is used by the application */
     // mapHolder,
     /* application modules */
-    MyApplication,
+    FHTApp,
     entities,
     ListViewController,
     ReadViewController,

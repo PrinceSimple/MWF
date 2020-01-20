@@ -1,0 +1,44 @@
+/* TODO: add any application specific styling here */
+#mediaReadView img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 10px auto 20px;
+    }
+#mediaReadView video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 10px auto 20px;
+    }
+#CRUDscope {
+    padding: 7px 0px 0px 15px;
+    font-size: 16pt;
+ 
+}
+#previewpic {
+    margin: 10px auto 20px;
+    max-width: 100%;
+    display: block;
+}
+#title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#mediaEditView main form {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 100%;
+    max-height: 100%;
+}
+#playicon {
+   
+}
+#descriptiontxt {
+
+}
+.mwf-radiogroup {
+    margin: 0px;
+    padding: 20px;
+}

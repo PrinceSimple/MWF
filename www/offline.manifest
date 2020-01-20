@@ -1,0 +1,64 @@
+CACHE MANIFEST
+
+# created by Frank Trojanowski
+# 2020-01-01
+#############
+# framework #
+#############
+
+CACHE:
+app.html
+content/img/videocontent.png
+content/img/videocontent_bw.png
+css/FHT.css
+js/controller/ListViewController.js
+js/controller/MediaEditViewController.js
+js/controller/MyInitialViewController.js
+js/controller/ReadViewController.js
+js/controller/ViewControllerTemplate.js
+js/FHTApp.js
+js/Main.js
+js/model/Entities.js
+lib/css/img/glyphicons/png/glyphicons-433-plus.png
+lib/css/img/glyphicons/png/glyphicons-518-option-vertical.png
+lib/css/img/glyphicons/png/glyphicons-82-refresh.png
+lib/css/img/glyphicons/png/glyphicons-17-bin.png
+lib/css/img/glyphicons/png/glyphicons-31-pencil.png
+lib/css/img/glyphicons/png/glyphicons-211-arrow-left.png
+lib/css/img/glyphicons/png/glyphicons-444-floppy-disk.png
+lib/css/img/glyphicons/png/glyphicons-517-menu-hamburger.png
+lib/css/mwf.css
+lib/css/mwfIcons.css
+lib/css/normalize.css
+lib/js/external/ractive.min.js
+lib/js/external/require.js
+lib/js/framework-modules.js
+lib/js/mwf/controller/mwfGenericDialogTemplateViewController.js
+lib/js/mwf/controller/mwfMapHolderLeaflet.js
+lib/js/mwf/crud/mwfEntityManager.js
+lib/js/mwf/crud/mwfGenericCRUDImplLocal.js
+lib/js/mwf/crud/mwfGenericCRUDImplRemote.js
+lib/js/mwf/crud/mwfIndexeddb.js
+lib/js/mwf/crud/mwfXhr.js
+lib/js/mwf/mwf.js
+lib/js/mwf/mwfEventhandling.js
+lib/js/mwf/mwfUtils.js
+offline.manifest
+OfflineCacheServiceWorker.js
+pwa/mipmap-hdpi/launcher-icon.png
+pwa/mipmap-mdpi/launcher-icon.png
+pwa/mipmap-xhdpi/launcher-icon.png
+pwa/mipmap-xxhdpi/launcher-icon.png
+pwa/mipmap-xxxhdpi/launcher-icon.png
+pwa/offline.png
+pwa/webapp-manifest.json
+
+NETWORK:
+api
+content
+available
+https://lorempixel.com
+https://placeimg.com
+
+FALLBACK:
+content/img/ pwa/offline.png
