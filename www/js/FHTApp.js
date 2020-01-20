@@ -29,9 +29,7 @@ class FHTApp extends mwf.Application {
 
         // activate the local crud operations
         this.initialiseCRUD(this.CRUDOPS.LOCAL, EntityManager)
-        // service worker Behelsimplementierung
-        let svcw
-        let swRegistration
+        // service worker Behelfsimplementierung
         //this.initialiseCacheServiceWorker()
         
         // TODO: do any further application specific initialisations here
