@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="offline.manifest">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Frank Trojanowski ESA 02</title>
@@ -40,9 +40,10 @@
 				<li class="mwf-listitem mwf-li-title-subtitle mwf-template mwf-databind" data-mwf-templatename="myapp-listitem" data-mwf-targetview="mediaReadView">
 					<!-- <img class="mwf-left-align" src="https://placeimg.com/100/100/city"/> -->
 					{{#if mediaType == 'video'}}
-					<div class="mwf-left-align">
-						<img src="./content/img/videocontent.png"/>
-						<span id="playicon"></span>
+					<div class="mwf-left-align overlay">
+						<!-- <img src="./content/img/videocontent.png"/> -->
+						<video src="{{src}}"></video>
+						<img id="playicon" src="./lib/css/img/glyphicons/png/glyphicons-221-play-button.png">
 					</div>
 				<!-- 	<span class=" mwf-img-plus mwf-right-align"></span> -->
 					{{else}}
