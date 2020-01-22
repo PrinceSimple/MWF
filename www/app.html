@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" manifest="offline.manifest">
-
 <head>
 	<meta charset="UTF-8">
 	<title>Frank Trojanowski ESA 02</title>
 	<!-- this tag avoids scaling the view on display -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 	<meta name="mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<!-- for pwa, we may include the manifest
@@ -47,9 +46,8 @@
 					</div>
 				<!-- 	<span class=" mwf-img-plus mwf-right-align"></span> -->
 					{{else}}
-					<img class="mwf-left-align" src="{{src}}"/>
+					<img class="mwf-left-align" src="{{{src}}}"/>
 					{{/if}}
-					<!-- <img  src="{{src}}" /> -->
 					<div class="mwf-li-titleblock mwf-right-fill">
 						<h2>{{title}}</h2>
 						<h3>{{addedDateString}}</h3>
@@ -166,7 +164,7 @@
 			</footer>
 		</div>
 	</div>
-	<div class="mwf-toast">
+	<div id="toast" class="mwf-toast">
 	</div>
 </body>
 </html>

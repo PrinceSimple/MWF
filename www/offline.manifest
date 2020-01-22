@@ -2,9 +2,6 @@ CACHE MANIFEST
 
 # created by Frank Trojanowski
 # 2020-01-01
-#############
-# framework #
-#############
 
 CACHE:
 app.html
@@ -27,6 +24,7 @@ lib/css/img/glyphicons/png/glyphicons-31-pencil.png
 lib/css/img/glyphicons/png/glyphicons-211-arrow-left.png
 lib/css/img/glyphicons/png/glyphicons-444-floppy-disk.png
 lib/css/img/glyphicons/png/glyphicons-517-menu-hamburger.png
+lib/css/img/glyphicons/png/glyphicons-12-camera.png
 lib/css/mwf.css
 lib/css/mwfIcons.css
 lib/css/normalize.css
@@ -43,17 +41,10 @@ lib/js/mwf/crud/mwfXhr.js
 lib/js/mwf/mwf.js
 lib/js/mwf/mwfEventhandling.js
 lib/js/mwf/mwfUtils.js
-offline.manifest
-OfflineCacheServiceWorker.js
-pwa/mipmap-hdpi/launcher-icon.png
-pwa/mipmap-mdpi/launcher-icon.png
-pwa/mipmap-xhdpi/launcher-icon.png
-pwa/mipmap-xxhdpi/launcher-icon.png
-pwa/mipmap-xxxhdpi/launcher-icon.png
-pwa/offline.png
-pwa/webapp-manifest.json
 
 NETWORK:
+*
+offline.manifest
 api
 content
 available

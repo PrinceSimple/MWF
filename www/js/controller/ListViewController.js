@@ -3,6 +3,7 @@
  */
 import { mwf } from "../Main.js"
 import { entities } from "../Main.js"
+import { mwfUtils } from "../Main.js"
 //import { GenericCRUDImplLocal } from "../Main.js"
 
 export default class ListViewController extends mwf.ViewController {
@@ -11,45 +12,28 @@ export default class ListViewController extends mwf.ViewController {
         super()
         this.resetDatabaseElement = null
         this.addNewMediaItem = null
-
     }
-
     /*
      * for any view: initialise the view
      */
     async oncreate() {
+        mwfUtils.isWebserverAvailable((res) =>{ 
+            return this.activateCRUD(res)
+        })
         this.addNewMediaItemElement = this.root.querySelector("#addNewMediaItem")
         this.addNewMediaItemElement.onclick = (() => {
-            /* this.crudops.create(new entities.MediaItem("m", "https://placeimg.com/100/100/city"))
-                .then((created) => {
-                    this.addToListview(created)
-                }
-            ) */
-            //this.createNewItem()
             this.nextView("mediaEditView", {item: new entities.MediaItem()})
         })
         this.resetDatabaseElement = this.root.querySelector("#resetDatabase")
-        // CRUD
-        /* this.crudops.readAll().then((items) => {
-            this.initialiseListview(this.items)
-        }) */
         this.resetDatabaseElement.onclick = (() => {
             if (confirm("Soll die Datenbank wirklich zurückgesetzt werden?")) {
                 indexedDB.deleteDatabase("mwftutdb")
             }
         })
-        this.root.querySelector("#refresh-btn").onclick = (() => {
-            this.application.switchCRUD(this.application.currentCRUDScope == 'remote' ? 'local' : 'remote')
-            this.root.querySelector("#CRUDscope").innerHTML = this.application.currentCRUDScope
-            entities.MediaItem.readAll().then((items) => {
-                this.initialiseListview(items)
-            })
-        })
         this.root.querySelector("#CRUDscope").innerHTML = this.application.currentCRUDScope
         entities.MediaItem.readAll().then((items) => {
             this.initialiseListview(items)
         })
-        
         super.oncreate()
     }
     /*
@@ -152,6 +136,19 @@ export default class ListViewController extends mwf.ViewController {
     }
     editFRM(item) {
         this.nextView("mediaEditView", {item: item})
+    }
+    activateCRUD(res){
+        if(res){
+            this.root.querySelector("#refresh-btn").onclick = (() => {
+                this.application.switchCRUD(this.application.currentCRUDScope == 'remote' ? 'local' : 'remote')
+                this.root.querySelector("#CRUDscope").innerHTML = this.application.currentCRUDScope
+                entities.MediaItem.readAll().then((items) => {
+                    this.initialiseListview(items)
+                })
+            })
+        } else {
+            this.root.querySelector("#refresh-btn").setAttribute("disabled", "disabled")
+        }
     }
 }
 
